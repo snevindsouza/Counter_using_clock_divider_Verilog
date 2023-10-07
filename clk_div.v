@@ -12,15 +12,15 @@ initial begin
     clkdiv = 1'b0;
 end
 
-always @(posedge clk) begin
+always @(posedge clk) begin    //4MHz clock (spartan 6 FPGA)
     i = i+1;
-    if (i == 4) begin
+    if (i == 4) begin        //i == 2000000 for 4MHz clock (depends on the FPGA)
         clkdiv = ~clkdiv;
         i = 0;
     end
 end
 
-always @(posedge clkdiv) begin
+always @(posedge clkdiv) begin    //1Hz clock
     count = count+1;
 end
 
